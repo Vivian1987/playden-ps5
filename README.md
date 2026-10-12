@@ -16,6 +16,9 @@ private Windows environment and its own tile on the PS5 Home screen.
 
 ![Playden's library on the PS5: Steam games as cover art, with Installed, All, Favorites and Hidden on the side](docs/images/library.jpg)
 
+## Troubleshooting
+See [TROUBLESHOOTING.md]
+
 ## Features
 
 - **Steam sign-in with a QR code.** Approve the sign-in in the Steam mobile app. No password typed on the console.
