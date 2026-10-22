@@ -93,8 +93,8 @@ you sign in:
     (port 8888).
 - **Windows games:** a Steam account with games, or game folders you already have (see [Import Windows games](#import-windows-games)).
 - **A computer with Python 3** on the same network as the PS5, to copy Playden and the kit to it.
-- **To build it yourself (optional):** a Mac with Apple Silicon. Linux should also work, but we have not tested it
-  yet. See [Build from source](#build-from-source).
+- **To build it yourself (optional):** a Mac with Apple Silicon, or Ubuntu Linux (also under WSL2 on Windows) for
+  the PS5 package. See [Build from source](#build-from-source).
 
 Tested with kstuff-lite 1.11, ShadowMountPlus v1.7-beta5fix1 and v1.7beta2, elfldr v0.26, zftpd 1.6.0 and ps5-web-file-manager v1.9.
 Other versions can work, but these are the ones we know.
@@ -251,12 +251,22 @@ run.
 
 ### What you need
 
-- macOS on Apple Silicon. Linux should also work, but we have not tested it yet.
-- Xcode command line tools.
-- Homebrew packages:
+- macOS on Apple Silicon, or Ubuntu Linux. The desktop app and the tests build on the Mac only. The PS5 package
+  also builds on Ubuntu, including Ubuntu under WSL2 on Windows.
+- On macOS: Xcode command line tools and these Homebrew packages:
 
   ```sh
   brew install cmake ninja pkgconf sdl2-compat llvm@18 python
+  ```
+
+- On Ubuntu: these apt packages, then [Homebrew](https://brew.sh) with its LLVM 18. The build checks its output
+  against pinned hashes that only Homebrew's LLVM reproduces; Ubuntu's `clang-18` package builds, but the hash
+  check stops it.
+
+  ```sh
+  sudo apt install cmake ninja-build pkgconf libsdl2-dev llvm-18 llvm-18-dev clang-18 lld-18 \
+    python3 python3-dev python3-pip python3-venv unzip zstd binutils git curl perl xz-utils
+  brew install llvm@18
   ```
 
 - About 2 GB of free disk space.
